@@ -1,9 +1,9 @@
 import React from 'react'
 
-const mailboxList = () => {
+const MailboxList = () => {
   return (
     <div>mailboxList</div>
   )
 }
 
-export default mailboxList
+export default MailboxList

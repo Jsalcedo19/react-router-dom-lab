@@ -1,9 +1,9 @@
 import React from 'react'
 
-const mailboxForm = () => {
+const MailboxForm = () => {
   return (
     <div>mailboxForm</div>
   )
 }
 
-export default mailboxForm  
+export default MailboxForm  
