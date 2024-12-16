@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const MailboxForm = () => {
+const MailboxForm = (addbox) => {
 const [boxholder, setBoxholder] = useState('');
 const [boxsize, setBoxsize] = useState('');
 const navigate = useNavigate();
