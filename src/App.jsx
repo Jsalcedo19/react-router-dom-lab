@@ -1,26 +1,36 @@
-import React from 'react';
-import './App.css';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes, } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import MailboxList from './components/MailboxList'; 
 import MailboxDetails from './components/MailboxDetails'; 
 import MailboxForm from './components/MailboxForm';
-
+import { useState } from 'react';
 
 const App = () => {
+ const [mailboxes, setMailboxes] = useState([]);
+setMailboxes([...mailboxes, newMailbox]);
+
+const addbox = (newMailbox) => { 
+  newMailbox.id = mailboxes.length + 1;
+  setMailboxes([...mailboxes, newMailbox]);
+};
+
+
+return (
+  <div>
+    <Navbar />
+     <Routes>
+      <Route path="/" element={<main><h1>Post Office</h1></main>} />
+      <Route path="/mailboxes" element={<MailboxList mailboxes={mailboxes} />} />
+      <Route path="/new-mailbox" element={<MailboxForm addbox={addbox} />}/>
+      <Route path="/mailboxes/:id" element={<MailboxDetails mailboxes={mailboxes}/>} />
+    </Routes>
+
+</div>
 
 
 
 
-
-
-  return <h1>Post Office</h1>;
-
-
-
-
-
-
+);
 };
 
 export default App;
