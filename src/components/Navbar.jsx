@@ -5,12 +5,18 @@ const Navbar = () => {
   return (
     <nav>
       <ul>
-        <link to="/"><li>Home</li>
-        </link>
-        <link to="/mailboxes"><li>Mailbox</li>
-        </link>
-        <link to="/mailboxes/new"><li>New Mailbox</li>
-        </link>
+      <li>
+        <Link to="/">Home</Link>
+        </li>
+        
+        <li>
+          <Link to="/mailboxes">Mailboxes</Link>
+          </li>
+        
+        <li>
+          <Link to="/new-mailbox">New Mailbox</Link>
+          </li>
+        
       </ul>
     </nav>
   );

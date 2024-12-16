@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 const MailboxList = ({ mailboxes }) => {
   
 return (
-    <div>
+    <>
       {mailboxes.map(mailbox => (
         <div key={mailboxes._id} className='mail-box'>
           <Link to={`/mailboxes/${mailbox._id}`}>
@@ -12,7 +12,7 @@ return (
           </Link>
         </div>
       ))}
-    </div>
+    </>
   );
 }
 
