@@ -11,13 +11,33 @@ const handleSubmit = (event) => {
   const newMailbox = { boxholder, boxsize };
   addbox(newMailbox);
   navigate('/mailboxes');
-}
+};
 
 
 
   return (
-    <div>mailboxForm</div>
-  )
-}
+    <form onSubmit={handleSubmit}>
+      <label>
+        Boxholder:
+        <input
+          type="text"
+          value={boxholder}
+          onChange={(event) => setBoxholder(event.target.value)}
+        />
+      </label>
+      <label>
+        Boxsize:
+        <input
+          type="text"
+          value={boxsize}
+          onChange={(event) => setBoxsize(event.target.value)}
+        />
+      </label>
+      <button type="submit">Add Mailbox</button>
+    </form>
 
-export default MailboxForm  
+
+  );
+};
+
+export default MailboxForm;  
