@@ -7,7 +7,6 @@ import { useState } from 'react';
 
 const App = () => {
  const [mailboxes, setMailboxes] = useState([]);
-setMailboxes([...mailboxes, newMailbox]);
 
 const addbox = (newMailbox) => { 
   newMailbox.id = mailboxes.length + 1;
