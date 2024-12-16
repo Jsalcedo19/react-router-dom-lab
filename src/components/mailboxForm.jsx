@@ -1,41 +1,48 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const MailboxForm = (addbox) => {
-const [boxholder, setBoxholder] = useState('');
-const [boxsize, setBoxsize] = useState('');
-const navigate = useNavigate();
+const initialState = { 
+  boxholder: '',
+  boxSize: 0,
+};
+
+const MailboxForm = () => {
+  const [formData, setFormData] = useState(initialState);
+  const navigate = useNavigate();
 
 const handleSubmit = (event) => {
   event.preventDefault();
-  const newMailbox = { boxholder, boxsize };
-  addbox(newMailbox);
+  addbox(formData);
   navigate('/mailboxes');
+};
+const handleChange = ({ target }) => {
+  setFormData({ ...formData, [target.name]: target.value });
 };
 
 
-
   return (
+    <main>
+      <h1>New Mailbox</h1>
     <form onSubmit={handleSubmit}>
-      <label>
-        Boxholder:
+      <label htmlFor="boxholder">Name of owner:</label>
         <input
           type="text"
-          value={boxholder}
-          onChange={(event) => setBoxholder(event.target.value)}
+          name="boxholder"
+          value={formData.boxholder}
+          onChange={handleChange}
         />
-      </label>
-      <label>
-        Boxsize:
-        <input
-          type="text"
-          value={boxsize}
-          onChange={(event) => setBoxsize(event.target.value)}
+      
+      <label htmlFor='boxSize-select'>Box Size:</label>
+        <select
+          id='boxSize-select'
+          value={formData.boxSize}
+          onChange={handleChange}
+          
         />
-      </label>
+      
       <button type="submit">Add Mailbox</button>
     </form>
-
+</main> 
 
   );
 };
