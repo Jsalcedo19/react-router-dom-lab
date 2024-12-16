@@ -4,6 +4,7 @@ import MailboxList from "./components/MailboxList";
 import MailboxDetails from "./components/MailboxDetails";
 import MailboxForm from "./components/MailboxForm";
 import { useState } from "react";
+import "./App.css";
 
 const App = () => {
   const [mailboxes, setMailboxes] = useState([]);
