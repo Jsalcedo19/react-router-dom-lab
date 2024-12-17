@@ -1,50 +1,53 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const initialState = { 
-  boxholder: '',
-  boxSize: 0,
+  boxholder: '',  // Correct key name
+  boxSize: '',
 };
 
-const MailboxForm = () => {
+const MailboxForm = (props) => {
   const [formData, setFormData] = useState(initialState);
-  const navigate = useNavigate();
 
-const handleSubmit = (event) => {
-  event.preventDefault();
-  addbox(formData);
-  navigate('/mailboxes');
-};
-const handleChange = ({ target }) => {
-  setFormData({ ...formData, [target.name]: target.value });
-};
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    props.addbox(formData);
+    setFormData(initialState);
+  };
 
+  const handleChange = (event) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+  };
 
   return (
     <main>
       <h1>New Mailbox</h1>
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="boxholder">Name of owner:</label>
-        <input
-          type="text"
-          name="boxholder"
-          value={formData.boxholder}
+      <form onSubmit={handleSubmit}>
+        <label htmlFor='boxholder'>Name of owner:</label>
+        <input 
+          type="text" 
+          name='boxholder' 
+          id='boxholder' 
+          value={formData.boxholder} 
           onChange={handleChange}
         />
-      
-      <label htmlFor='boxSize-select'>Box Size:</label>
-        <select
-          id='boxSize-select'
-          value={formData.boxSize}
-          onChange={handleChange}
-          
-        />
-      
-      <button type="submit">Add Mailbox</button>
-    </form>
-</main> 
 
+        <label htmlFor='boxSize-select'>What size of box?</label>
+        <select 
+          name="boxSize" 
+          id="boxSize-select" 
+          value={formData.boxSize} // Optional: to control the select value
+          onChange={handleChange}
+        >
+          <option value="">-- Select size --</option>
+          <option value="Small">Small</option>
+          <option value="Medium">Medium</option>
+          <option value="Large">Large</option>
+        </select>
+
+        <button type='submit'>Add mailbox</button>
+      </form>
+    </main>
   );
-};
+}
 
-export default MailboxForm;  
+export default MailboxForm;
